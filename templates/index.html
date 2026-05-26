@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Powered Car Price Prediction System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="aurora"></div>
+  <header class="hero" id="home">
+    <nav class="nav glass">
+      <h2>VelocitiAI</h2>
+      <a class="btn" href="#predictor">Predict Now</a>
+    </nav>
+    <div class="hero-content">
+      <div>
+        <p class="tag">Luxury Automobile AI Platform</p>
+        <h1>AI Powered Car Price Prediction System</h1>
+        <p class="lead">Instant intelligent valuation with futuristic analytics, premium UI, and live model-based price prediction.</p>
+        <a class="cta" href="#predictor">Launch Live Prediction</a>
+      </div>
+      <div class="float-cards">
+        <div class="glass card">Realtime ML Engine</div>
+        <div class="glass card">Market Intelligence</div>
+        <div class="glass card">Confidence Scoring</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="predictor" class="section">
+      <h2>Live Prediction System</h2>
+      <form id="predictionForm" class="glass form-grid">
+        <label>Car Name<select name="car_name">{% for c in car_names %}<option>{{ c }}</option>{% endfor %}</select></label>
+        <label>Brand<select name="brand">{% for b in brands %}<option>{{ b }}</option>{% endfor %}</select></label>
+        <label>Year<input type="number" name="year" min="2003" max="2026" value="2018" required /></label>
+        <label>Fuel Type<select name="fuel_type"><option>Petrol</option><option>Diesel</option><option>CNG</option></select></label>
+        <label>Transmission<select name="transmission"><option>Manual</option><option>Automatic</option></select></label>
+        <label>Seller Type<select name="seller_type"><option>Dealer</option><option>Individual</option></select></label>
+        <label>Mileage (kmpl)<input type="range" name="mileage" min="8" max="35" value="18" oninput="this.nextElementSibling.value=this.value"><output>18</output></label>
+        <label>Engine (cc)<input type="number" name="engine" min="700" max="5000" value="1200" required /></label>
+        <label>Max Power (bhp)<input type="number" name="max_power" min="40" max="500" value="80" required /></label>
+        <label>Seats<select name="seats"><option>2</option><option>4</option><option selected>5</option><option>6</option><option>7</option><option>8</option></select></label>
+        <label>Kilometers Driven<input type="number" name="kms_driven" min="0" max="500000" value="35000" required /></label>
+        <label>Owner Type<select name="owner_type"><option value="0">First Owner</option><option value="1">Second Owner</option><option value="2">Third Owner</option><option value="3">Fourth+ Owner</option></select></label>
+        <button type="submit" class="cta full">Predict Price</button>
+      </form>
+
+      <div id="result" class="glass result hidden">
+        <h3>Estimated Market Price</h3>
+        <p id="priceText">? --</p>
+        <p id="confidenceText">Confidence: --</p>
+        <div class="chips">
+          <span id="ageChip"></span><span id="mileChip"></span><span id="ownerChip"></span>
+        </div>
+        <ul id="explanationList"></ul>
+      </div>
+    </section>
+
+    <section class="section cols">
+      <div class="glass"><h3>About AI System</h3><p>Tree-based ML model predicts resale value using historical car market signals.</p></div>
+      <div class="glass"><h3>How Prediction Works</h3><p>Input features are encoded, mapped, and passed directly into the saved production model.</p></div>
+      <div class="glass"><h3>Why Choose Us</h3><p>Fast decisions, rich explanations, premium UI, and transparent analytics in one platform.</p></div>
+    </section>
+
+    <section class="section cols">
+      <div class="glass"><h3>Features</h3><p>Live prediction, confidence scoring, glassmorphism UI, and trend-ready design system.</p></div>
+      <div class="glass"><h3>Car Analytics</h3><p>Vehicle age, mileage band, and ownership risk surfaced instantly after inference.</p></div>
+      <div class="glass"><h3>FAQ</h3><p>Q: Is model retrained? A: No, this app only loads your saved model for inference.</p></div>
+    </section>
+
+    <section class="section glass contact">
+      <h2>Contact</h2>
+      <p>Need enterprise API integration or dealership dashboard setup? Reach out at contact@velocitiai.ai</p>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 VelocitiAI | Premium Car Valuation Intelligence</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
+
